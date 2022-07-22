@@ -8,10 +8,10 @@ import {
     faEllipsisVertical,
     faEarthAsia,
     faKeyboard,
-    faCloudUpload,
     faGear,
     faSignOut,
     faCoins,
+    faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -23,7 +23,9 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
-import { faCircleQuestion, faMessage, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
+import { InboxIcon, MessagesIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -145,13 +147,20 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                <button className={cx('action-btn', 'upload-btn')}>
+                                    <FontAwesomeIcon icon={faPlus} />
+                                    Upload
                                 </button>
                             </Tippy>
-                            <Tippy content="Message" placement="bottom">
+                            <Tippy content="Messages" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <MessagesIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                    <span className={cx('action-btn', 'inbox-noti')}>13</span>
                                 </button>
                             </Tippy>
                         </>
@@ -168,10 +177,11 @@ function Header() {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <img
-                                src="https://p77-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/d3e7f162c66123fc53843297e9331d9d.jpeg?biz_tag=tiktok_user.user_cover&x-expires=1658476800&x-signature=zQxyLn23dK6hYf9Js8vju5HNSfA%3D"
+                            <Image
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV5bmq26ZcKl_yKtm0iZ_QXAm8Ito--1wJqQ&usqp=CAU"
                                 className={cx('user-avatar')}
                                 alt="Nguyen Ngoc Hoa"
+                                fallback="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
