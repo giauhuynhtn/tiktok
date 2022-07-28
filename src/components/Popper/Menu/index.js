@@ -42,7 +42,7 @@ function Menu({ children, items = [], hideOnClick = false, className, onChange =
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx({ [className]: className })}>
+                    <PopperWrapper className={cx('menu-popper', { [className]: className })}>
                         {history.length > 1 && (
                             <Header
                                 title="Language"
@@ -51,7 +51,8 @@ function Menu({ children, items = [], hideOnClick = false, className, onChange =
                                 }}
                             />
                         )}
-                        {renderItems()}
+
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}

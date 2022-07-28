@@ -136,11 +136,7 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu
-                        items={currentUser ? userMenu : MENU_ITEMS}
-                        className={cx('menu-list')}
-                        onChange={handleMenuChange}
-                    >
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV5bmq26ZcKl_yKtm0iZ_QXAm8Ito--1wJqQ&usqp=CAU"
